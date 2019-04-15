@@ -20,25 +20,46 @@ public class Court {
 
     public void placePolicesRandomly(int policeNumbers) {
         Random randomGenator = new Random();
-        HashMap<Integer, Integer> randomIds = new HashMap<Integer, Integer>();
+
         for (int i = 0; i < policeNumbers; i++) {
             int x = randomGenator.nextInt(length);
             int y = randomGenator.nextInt(width);
-            if (randomIds.containsKey(x))
-                if (randomIds.get(x) == y) {
-                    System.out.println("random not created");
-                    i--;
-                    break;
+            /*
+            if (polices.size() == 0) {
+                court[x][y] = "P";
+                Police p = new Police(x, y);
+                polices.add(p);
+                System.out.println("Random created for police " + i);
+                continue;
+            }*/ else {
+                boolean bl = true;
+
+                for (Police police : polices) {
+                    if (police.getCurrentx() == x && police.getCurrenty() == y) {
+                        i--;
+                        bl = false;
+                        //////////////////////////////////////////////
+                        break;
+                    }
                 }
-            randomIds.put(x, y);
-            court[x][y] = "P";
-            Police p = new Police();
-            polices.add(p);
-            System.out.println("Random created for police " + i);
+                if(bl == true){
+                    court[x][y] = "P";
+                Police p = new Police(x, y);
+                polices.add(p);
+                System.out.println("Random created for police " + i);
+                }
+
+
+
+
+
+            }
 
         }
 
     }
 
-    public void placeThief
 }
+
+// public void placeThief
+
