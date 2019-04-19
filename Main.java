@@ -40,6 +40,7 @@ public class Main {
             playGround.displayCourt();
             System.out.println("\n\n\n");
             Thread.sleep(1000);
+            System.out.flush();
         }
 
 
