@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Random;
+import java.lang.Thread;
+
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final Scanner scan = new Scanner(System.in);
         int length;
         int width;
@@ -20,12 +22,25 @@ public class Main {
 
         playGround.placePolicesRandomly(policeNumbers);
         playGround.placeThiefRandomly();
-
         playGround.displayCourt();
         System.out.println("\n\n\n");
-        playGround.thief.moveRandomly(length,width);
+        ArrayList<Police> polices = playGround.getPolices();
+
+        while(true){
+
+        playGround.getThief().moveRandomly(length,width);
+        playGround.updateCourt();
+        for(Police police:polices)
+            police.moveRandomly(length,width);
+
         playGround.updateCourt();
         playGround.displayCourt();
+        System.out.println("\n\n\n");
+            Thread.sleep(1000);
+        }
+
+
+
 
 
 
