@@ -3,12 +3,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Court {
-    private int length;
-    private int width;
-    private ArrayList<Police> polices = new ArrayList<Police>();
-    private Thief thief;
+    public final int length;
+    public final int width;
+    public ArrayList<Police> polices = new ArrayList<Police>();
+    public Thief thief;
 
-    private String[][] court;
+    public String[][] court;
 
     public Court(int length, int width) {
         this.length = length;
@@ -19,8 +19,28 @@ public class Court {
                 court[i][j] = "-";
     }
 
-    public void setCourtField(int x ,int y,String s) {
-        court[x][y] = s;
+    public void updateCourt() {
+        for (int i = 0; i < length; i++)
+            for (int j = 0; j < width; j++)
+                court[i][j] = "-";
+
+        court[thief.getCurrentx()][thief.getCurrenty()] = "D";
+
+        for (Police police : polices){
+            if(court[police.getCurrentx()][police.getCurrenty()].equals("D") || court[police.getLastx()][police.getLasty()].equals("D") )
+            {
+                System.out.println("The thief was arrested");
+                displayCourt();
+                System.exit(0);
+            }
+            court[police.getCurrentx()][police.getCurrenty()] = "P";
+        }
+
+
+    }
+
+    public void setThief(Thief thief) {
+        this.thief = thief;
     }
 
     public void placePolicesRandomly(int policeNumbers) {
@@ -44,7 +64,7 @@ public class Court {
                 court[x][y] = "P";
                 Police p = new Police(x, y);
                 polices.add(p);
-                System.out.println("Random created for police " + i);
+               // System.out.println("Random created for police " + i);
             }
 
 
@@ -65,6 +85,8 @@ public class Court {
             }
             if (b == true) {
                 thief = new Thief(x, y);
+                //thief.setCurrentx(x);
+                //thief.setCurrenty(y);
                 court[x][y] = "D";
                 System.out.println("Random created for the thief ");
                 break;
@@ -75,7 +97,7 @@ public class Court {
     public void displayCourt() {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < width; j++)
-                System.out.print(court[i][j]+" |");
+                System.out.print(court[i][j] + " |");
             System.out.println();
         }
 
