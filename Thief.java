@@ -40,6 +40,7 @@ public class Thief {
 
     public void moveRandomly(int length, int width) {
         Random randomGenerator = new Random();
+        moveNumbers++;
 
         if (currentx != 0 && currentx != length - 1 && currenty != 0 && currenty != width - 1) {
             int rx = randomGenerator.nextInt(3) - 1;
