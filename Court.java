@@ -48,6 +48,7 @@ public class Court {
             court[police.getCurrentx()][police.getCurrenty()] = "P";
         }
         if(b == true){
+            System.out.println("final step of simulation was this:\n\n");
             displayCourt();
             System.exit(0);
         }
@@ -116,7 +117,7 @@ public class Court {
                 //thief.setCurrentx(x);
                 //thief.setCurrenty(y);
                 court[x][y] = "D";
-                System.out.println("Random created for the thief ");
+                //System.out.println("Random created for the thief ");
                 break;
             }
         }
