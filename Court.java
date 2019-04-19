@@ -1,12 +1,12 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 public class Court {
-    public final int length;
-    public final int width;
-    public ArrayList<Police> polices = new ArrayList<Police>();
-    public Thief thief;
+    private final int length;
+    private final int width;
+    private ArrayList<Police> polices = new ArrayList<Police>();
+    private Thief thief;
 
     public String[][] court;
 
@@ -25,15 +25,31 @@ public class Court {
                 court[i][j] = "-";
 
         court[thief.getCurrentx()][thief.getCurrenty()] = "D";
+        boolean b = false;
+        for (Police police : polices) {
 
-        for (Police police : polices){
-            if(court[police.getCurrentx()][police.getCurrenty()].equals("D") || court[police.getLastx()][police.getLasty()].equals("D") )
-            {
-                System.out.println("The thief was arrested");
-                displayCourt();
-                System.exit(0);
+            if (court[police.getCurrentx()][police.getCurrenty()].equals("D")) {
+                b = true;
+                System.out.println("The thief was arrested by police in * field");
+                System.out.println("thief moved: " + thief.getMoveNumbers() + " times");
+                System.out.println("police moved: " + police.getMoveNumbers() * thief.getMoveNumbers());
+                court[police.getCurrentx()][police.getCurrenty()] = "*";
+
             }
+            if (court[police.getLastx()][police.getLasty()].equals("D")) {
+                b = true;
+                System.out.println("The thief himself went to the Police station in * field");
+                System.out.println("thief moved: " + thief.getMoveNumbers() + " times");
+                System.out.println("police moved: " + police.getMoveNumbers() * thief.getMoveNumbers());
+                court[police.getCurrentx()][police.getCurrenty()] = "*";
+
+            }
+            if(!court[police.getCurrentx()][police.getCurrenty()].equals("*"))
             court[police.getCurrentx()][police.getCurrenty()] = "P";
+        }
+        if(b == true){
+            displayCourt();
+            System.exit(0);
         }
 
 
@@ -41,6 +57,14 @@ public class Court {
 
     public void setThief(Thief thief) {
         this.thief = thief;
+    }
+
+    public Thief getThief() {
+        return thief;
+    }
+
+    public ArrayList<Police> getPolices() {
+        return polices;
     }
 
     public void placePolicesRandomly(int policeNumbers) {
@@ -64,7 +88,7 @@ public class Court {
                 court[x][y] = "P";
                 Police p = new Police(x, y);
                 polices.add(p);
-               // System.out.println("Random created for police " + i);
+                // System.out.println("Random created for police " + i);
             }
 
 
