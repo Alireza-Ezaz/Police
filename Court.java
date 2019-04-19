@@ -97,7 +97,7 @@ public class Court {
     public void displayCourt() {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < width; j++)
-                System.out.print(court[i][j] + " |");
+                System.out.print(court[i][j] + " | ");
             System.out.println();
         }
 
