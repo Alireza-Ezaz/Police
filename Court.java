@@ -58,13 +58,22 @@ public class Court {
                 if (police.getCurrentx() == x && police.getCurrenty() == y)
                     b = false;
             }
-            if(b == true){
-                thief = new Thief(x,y);
+            if (b == true) {
+                thief = new Thief(x, y);
                 court[x][y] = "D";
-                System.out.println("Random created for the thief " );
+                System.out.println("Random created for the thief ");
                 break;
             }
         }
+    }
+
+    public void displayCourt() {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < width; j++)
+                System.out.print(court[i][j]+" |");
+            System.out.println();
+        }
+
     }
 
 
