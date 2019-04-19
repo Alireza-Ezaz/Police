@@ -7,9 +7,9 @@ public class Police {
     private int currenty;
     private int moveNumbers = 0;
 
-    public Police(int x,int y){
-       lastx = currentx = x;
-       lasty = currenty = y;
+    public Police(int x, int y) {
+        lastx = currentx = x;
+        lasty = currenty = y;
     }
 
     public void setLastx(int lastx) {
@@ -52,7 +52,17 @@ public class Police {
         return lasty;
     }
 
-    public void moveRandomly(int length,int width){
+    public boolean lookForThief(int length, int width, int xThief, int yThief) {
+        boolean bl = false;
+            for (int i = currentx - 2; i <= currentx + 2; i++)
+                for (int j = currenty - 2; j <= currenty + 2; j++)
+                    if (i == xThief && j == yThief)
+                        bl = true;
+
+        return bl;
+    }
+
+    public void moveRandomly(int length, int width) {
         Random randomGenerator = new Random();
         moveNumbers++;
 
