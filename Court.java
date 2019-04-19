@@ -13,9 +13,14 @@ public class Court {
     public Court(int length, int width) {
         this.length = length;
         this.width = width;
-
         court = new String[length][width];
+        for (int i = 0; i < length; i++)
+            for (int j = 0; j < width; j++)
+                court[i][j] = "-";
+    }
 
+    public void setCourtField(int x ,int y,String s) {
+        court[x][y] = s;
     }
 
     public void placePolicesRandomly(int policeNumbers) {
