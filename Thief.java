@@ -10,10 +10,6 @@ public class Thief {
         this.currenty = currenty;
     }
 
-    public Thief() {
-        currenty = currentx = 0;
-    }
-
     public void setCurrentx(int currentx) {
         this.currentx = currentx;
     }

@@ -33,7 +33,7 @@ public class Main {
             for (Police police : polices) {
                 if (!police.lookForThief(length, width, playGround.getThief().getCurrentx(), playGround.getThief().getCurrenty()))
                     police.moveRandomly(length, width);
-            //intelligent move.......
+            police.moveIntellegently(playGround.getThief().getCurrentx(), playGround.getThief().getCurrenty());
             }
 
             playGround.updateCourt();

@@ -53,13 +53,28 @@ public class Police {
     }
 
     public boolean lookForThief(int length, int width, int xThief, int yThief) {
+        //1 for is enough beacause:)))))))))))
         boolean bl = false;
-            for (int i = currentx - 2; i <= currentx + 2; i++)
-                for (int j = currenty - 2; j <= currenty + 2; j++)
-                    if (i == xThief && j == yThief)
-                        bl = true;
+        for (int i = currentx - 2; i <= currentx + 2; i++)
+            for (int j = currenty - 2; j <= currenty + 2; j++)
+                if (i == xThief && j == yThief)
+                    bl = true;
 
         return bl;
+    }
+
+    public void moveIntellegently(int xThief, int yThief) {
+        if (xThief > currentx)
+            currentx++;
+        if (xThief < currentx)
+            currentx--;
+        if (currentx == xThief && yThief > currenty)
+            currenty++;
+        if (currentx == xThief && yThief < currenty)
+            currenty--;
+        moveNumbers++;
+
+
     }
 
     public void moveRandomly(int length, int width) {

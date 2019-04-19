@@ -32,7 +32,7 @@ public class Court {
                 b = true;
                 System.out.println("The thief was arrested by police in * field");
                 System.out.println("thief moved: " + thief.getMoveNumbers() + " times");
-                System.out.println("police moved: " + police.getMoveNumbers() * thief.getMoveNumbers());
+                System.out.println("police moved: " + polices.size() * thief.getMoveNumbers()+" times");
                 court[police.getCurrentx()][police.getCurrenty()] = "*";
 
             }
@@ -40,7 +40,7 @@ public class Court {
                 b = true;
                 System.out.println("The thief himself went to the Police station in * field");
                 System.out.println("thief moved: " + thief.getMoveNumbers() + " times");
-                System.out.println("police moved: " + police.getMoveNumbers() * thief.getMoveNumbers());
+                System.out.println("police moved: " + polices.size() * thief.getMoveNumbers()+" times");
                 court[police.getCurrentx()][police.getCurrenty()] = "*";
 
             }
@@ -61,6 +61,10 @@ public class Court {
 
     public Thief getThief() {
         return thief;
+    }
+
+    public String[][] getCourt() {
+        return court;
     }
 
     public ArrayList<Police> getPolices() {
