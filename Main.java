@@ -18,7 +18,7 @@ public class Main {
         policeNumbers = scan.nextInt();
 
 
-        Court playGround = new Court(length,width);
+        Court playGround = new Court(length, width);
 
         playGround.placePolicesRandomly(policeNumbers);
         playGround.placeThiefRandomly();
@@ -26,24 +26,21 @@ public class Main {
         System.out.println("\n\n\n");
         ArrayList<Police> polices = playGround.getPolices();
 
-        while(true){
+        while (true) {
 
-        playGround.getThief().moveRandomly(length,width);
-        playGround.updateCourt();
-        for(Police police:polices)
-            police.moveRandomly(length,width);
+            playGround.getThief().moveRandomly(length, width);
+            playGround.updateCourt();
+            for (Police police : polices) {
+                if (!police.lookForThief(length, width, playGround.getThief().getCurrentx(), playGround.getThief().getCurrenty()))
+                    police.moveRandomly(length, width);
+            //intelligent move.......
+            }
 
-        playGround.updateCourt();
-        playGround.displayCourt();
-        System.out.println("\n\n\n");
+            playGround.updateCourt();
+            playGround.displayCourt();
+            System.out.println("\n\n\n");
             Thread.sleep(1000);
         }
-
-
-
-
-
-
 
 
     }
