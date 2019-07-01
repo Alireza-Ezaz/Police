@@ -7,6 +7,12 @@ public class Police {
     private int currenty;
     private int moveNumbers = 0;
 
+    /**
+     *
+     * @param x ishihkhkhk
+     * @param y ijoihjoijhoih
+     */
+
     public Police(int x, int y) {
         lastx = currentx = x;
         lasty = currenty = y;

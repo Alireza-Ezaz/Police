@@ -5,6 +5,12 @@ public class Thief {
     private int currenty;
     private int moveNumbers = 0;
 
+    /**
+     *
+     * @param currentx curx
+     * @param currenty cury
+     */
+
     public Thief(int currentx, int currenty) {
         this.currentx = currentx;
         this.currenty = currenty;
